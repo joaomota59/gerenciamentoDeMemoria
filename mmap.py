@@ -12,14 +12,14 @@ def regular_io_read(filename):#Leitura convencional
         text = file_obj.read()
 
 def mmap_io_write(filename):#Escrita mmap
-    with open(filename, mode="r+") as file_obj:
+    with open(filename, mode="r+", encoding="utf8") as file_obj:
         with mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_WRITE) as mmap_obj:
-            mmap_obj[10:16] = b"python"
+            mmap_obj[0:6] = b"python"
             mmap_obj.flush()
 
-def regular_io(filename):#Escrita convencional
+def regular_io_write(filename):#Escrita convencional
     with open(filename, mode="r+", encoding="utf8") as file_obj:
-        file_obj.write(b"python")
+        file_obj.write("python")
 
 files = ['8.txt','16.txt','32.txt','64.txt','128.txt','256.txt','512.txt']
 
@@ -46,10 +46,21 @@ for filename in files:
         print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
         print()
         
-    ###Escrita mmap###
-
-    #TEST_CODE2 =
-    elif entrada == 2:
+    elif entrada == 2:#Escrita de arquivo
         
-        mmap_io_write('oi.txt')
-        resultadoMmapEscrita = timeit.repeat(setup = SETUP_CODE, stmt = TEST_CODE2, repeat=3, number = 1)
+        k = timeit.repeat(
+        "regular_io_write(filename)",
+        repeat=3,
+        number=1,
+        setup="from __main__ import regular_io_write, filename")
+
+        x = timeit.repeat(
+        "mmap_io_write(filename)",
+        repeat=3,
+        number=1,
+        setup="from __main__ import mmap_io_write, filename")
+
+        print(filename[:-4]+" MB")
+        print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
+        print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
+        print()

@@ -1,6 +1,7 @@
 #Link de referência: https://realpython.com/python-mmap/
 import timeit
 import mmap
+import matplotlib.pyplot as plt
 
 def mmap_io_read(filename):#Leitura mmap
     with open(filename, mode="r", encoding="utf8") as file_obj:
@@ -25,6 +26,11 @@ files = ['8.txt','16.txt','32.txt','64.txt','128.txt','256.txt','512.txt']
 
 print("Selecione alguma opção\n")
 entrada = int(input('Leitura [1]\nEscrita [2]\n->'))
+if(entrada == 1 or entrada ==2):
+    print("\nProcessando gráfico...\nPor favor, espere.")
+
+resultadosTradicional = []
+resultadosMmap = []
 
 for filename in files:
 
@@ -41,10 +47,12 @@ for filename in files:
         number=1,
         setup="from __main__ import mmap_io_read, filename")
 
-        print(filename[:-4]+" MB")
-        print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
-        print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
-        print()
+        #print(filename[:-4]+" MB")
+        #print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
+        #print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
+        #print()
+        resultadosTradicional.append([sum(k)/len(k)])
+        resultadosMmap.append(sum(x)/len(x))
         
     elif entrada == 2:#Escrita de arquivo
         
@@ -60,7 +68,21 @@ for filename in files:
         number=1,
         setup="from __main__ import mmap_io_write, filename")
 
-        print(filename[:-4]+" MB")
-        print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
-        print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
-        print()
+        #print(filename[:-4]+" MB")
+        #print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
+        #print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
+        #print()
+        resultadosTradicional.append([sum(k)/len(k)])
+        resultadosMmap.append(sum(x)/len(x))
+if entrada == 1 or entrada ==2:
+    fig, ax = plt.subplots()
+    if (entrada == 1):
+        ax.set_title('Leitura tradicional e Leitura mmap')
+    else:
+        ax.set_title('Escrita tradicional e Escrita mmap')
+    ax.plot([i[:-4] for i in files],resultadosTradicional,label="Tradicional")
+    ax.plot([i[:-4] for i in files],resultadosMmap,label="mmap")
+    ax.set_xlabel('Tamanho de arquivos(MB)')
+    ax.set_ylabel('Tempo médio de execução(s)')
+    ax.legend()
+    plt.show()

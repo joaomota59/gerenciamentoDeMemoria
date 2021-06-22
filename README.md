@@ -4,6 +4,15 @@
 * Arquivos de entrada utilizados: https://drive.google.com/drive/u/1/folders/1mrjKXamBoXfU5X-7loa0xInKnZqo8Pqi
 > Obs: coloque todos arquivos no mesmo diretório do arquivo gdMemoria.py
 
+## Comandos no shell
+```shell
+sudo apt install python3-pip
+pip install matplotlib
+python3 gdMemoria.py
+```
+
+
+
 ## Resultados
 
 ### Leitura

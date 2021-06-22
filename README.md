@@ -88,4 +88,4 @@ Estratégia com mmap: - Tempo médio: 0.0009439666666664811
 * A leitura com mmap em todos cenários, desde arquivos menores até arquivos maiores, é mais rápida que a leitura tradiconal.
 * A leitura com mmap, como pode-se observar no gráfico de leitura, em cenários de arquivos maiores tamanhos compensa ainda mais que a leitura convencional.
 * A escrita com mmap, têm-se uma grande variação, porém em comparação com a escrita tradicional, em todos cenários, é pior que a escrita tradicional.
-> Obs: Os testes foram realizados em diferentes máquinas e apesar de algumas variações no gráfico todos teste chegaram a mesma conclusão.
+> Obs: Os testes foram realizados em diferentes máquinas e apesar de algumas variações no gráfico, todos testes chegaram a mesma conclusão.

@@ -15,12 +15,14 @@ def regular_io_read(filename):#Leitura convencional
 def mmap_io_write(filename):#Escrita mmap
     with open(filename, mode="r+") as file_obj:
         with mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_WRITE) as mmap_obj:
-            mmap_obj[0:50000] = b"a"*50000
+            quant = int(10000*int(filename[:-4]))
+            mmap_obj[0:quant] = b"a"*quant
             mmap_obj.close()
 
 def regular_io_write(filename):#Escrita convencional
     with open(filename, mode="r+") as file_obj:
-        file_obj.write("a"*50000)
+        quant = int(10000*int(filename[:-4]))
+        file_obj.write("a"*quant)
 
 files = ['8.txt','16.txt','32.txt','64.txt','128.txt','256.txt','512.txt']
 
@@ -38,19 +40,19 @@ for filename in files:
         k = timeit.repeat(
         "regular_io_read(filename)",
         repeat=3,
-        number=2,
+        number=30,
         setup="from __main__ import regular_io_read, filename")
 
         x = timeit.repeat(
         "mmap_io_read(filename)",
         repeat=3,
-        number=2,
+        number=30,
         setup="from __main__ import mmap_io_read, filename")
 
-        #print(filename[:-4]+" MB")
-        #print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
-        #print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
-        #print()
+        print(filename[:-4]+" MB")
+        print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
+        print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
+        print()
         resultadosTradicional.append(sum(k)/len(k))
         resultadosMmap.append(sum(x)/len(x))
         
@@ -59,19 +61,19 @@ for filename in files:
         k = timeit.repeat(
         "regular_io_write(filename)",
         repeat=3,
-        number=4000,
+        number=1000,
         setup="from __main__ import regular_io_write, filename")
 
         x = timeit.repeat(
         "mmap_io_write(filename)",
         repeat=3,
-        number=4000,
+        number=1000,
         setup="from __main__ import mmap_io_write, filename")
 
-        #print(filename[:-4]+" MB")
-        #print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
-        #print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
-        #print()
+        print(filename[:-4]+" MB")
+        print("Estratégia tradicional - Tempo médio:",sum(k)/len(k))
+        print("Estratégia com mmap: - Tempo médio:",sum(x)/len(x))
+        print()
         resultadosTradicional.append(sum(k)/len(k))
         resultadosMmap.append(sum(x)/len(x))
 if entrada == 1 or entrada ==2:

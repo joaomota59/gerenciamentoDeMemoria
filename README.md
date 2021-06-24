@@ -18,36 +18,35 @@ python3 gdMemoria.py
 ### Leitura
 
 ```java
-
 8 MB
-Estratégia tradicional - Tempo médio: 0.014212866666666546
-Estratégia com mmap: - Tempo médio: 0.00968333333333334
+Estratégia tradicional - Tempo médio: 0.4177620666666666
+Estratégia com mmap: - Tempo médio: 0.28859309999999994
 
 16 MB
-Estratégia tradicional - Tempo médio: 0.02773693333333327
-Estratégia com mmap: - Tempo médio: 0.018899533333333347
+Estratégia tradicional - Tempo médio: 0.8374720333333334
+Estratégia com mmap: - Tempo médio: 0.5762752999999998
 
 32 MB
-Estratégia tradicional - Tempo médio: 0.05511379999999999
-Estratégia com mmap: - Tempo médio: 0.04004603333333323
+Estratégia tradicional - Tempo médio: 1.6836472999999998
+Estratégia com mmap: - Tempo médio: 1.160039
 
 64 MB
-Estratégia tradicional - Tempo médio: 0.1106994999999998
-Estratégia com mmap: - Tempo médio: 0.07480633333333353
+Estratégia tradicional - Tempo médio: 3.366888233333333
+Estratégia com mmap: - Tempo médio: 2.2923849666666682
 
 128 MB
-Estratégia tradicional - Tempo médio: 0.2255226
-Estratégia com mmap: - Tempo médio: 0.14911273333333316
+Estratégia tradicional - Tempo médio: 6.7216032
+Estratégia com mmap: - Tempo médio: 4.559189333333333
 
 256 MB
-Estratégia tradicional - Tempo médio: 0.44676449999999984
-Estratégia com mmap: - Tempo médio: 0.3040315000000004
+Estratégia tradicional - Tempo médio: 13.428553066666666
+Estratégia com mmap: - Tempo médio: 9.07283826666667
 
 512 MB
-Estratégia tradicional - Tempo médio: 0.8843036666666672
-Estratégia com mmap: - Tempo médio: 0.6022681000000004
+Estratégia tradicional - Tempo médio: 26.760279500000006
+Estratégia com mmap: - Tempo médio: 18.22266400000001
 ```
-![Leitura com método tradicional e com mmap](https://imgur.com/VLRKThA.png)
+![Leitura com método tradicional e com mmap](https://imgur.com/0ZIzndD.png)
 
 ### Escrita
 

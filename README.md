@@ -52,39 +52,45 @@ Estratégia com mmap: - Tempo médio: 18.22266400000001
 
 ```java
 8 MB
-Estratégia tradicional - Tempo médio: 0.0005479000000000825
-Estratégia com mmap: - Tempo médio: 0.001445566666666694
+Estratégia tradicional - Tempo médio: 1.2956128
+Estratégia com mmap: - Tempo médio: 0.4085434666666667
 
 16 MB
-Estratégia tradicional - Tempo médio: 0.0005335000000001126
-Estratégia com mmap: - Tempo médio: 0.00099536666666659
+Estratégia tradicional - Tempo médio: 2.1846107666666668
+Estratégia com mmap: - Tempo médio: 0.4701303999999998
 
 32 MB
-Estratégia tradicional - Tempo médio: 0.000552466666666677
-Estratégia com mmap: - Tempo médio: 0.0009035999999998564
+Estratégia tradicional - Tempo médio: 4.384367166666666
+Estratégia com mmap: - Tempo médio: 0.5984439999999994
 
 64 MB
-Estratégia tradicional - Tempo médio: 0.0005083666666666117
-Estratégia com mmap: - Tempo médio: 0.0009968333333333728
+Estratégia tradicional - Tempo médio: 7.899791233333333
+Estratégia com mmap: - Tempo médio: 1.090882599999998
 
 128 MB
-Estratégia tradicional - Tempo médio: 0.0005588999999999918
-Estratégia com mmap: - Tempo médio: 0.0008254666666666447
+Estratégia tradicional - Tempo médio: 15.272900666666665
+Estratégia com mmap: - Tempo médio: 1.921779833333332
 
 256 MB
-Estratégia tradicional - Tempo médio: 0.000642533333333232
-Estratégia com mmap: - Tempo médio: 0.0009515333333333468
+Estratégia tradicional - Tempo médio: 30.460632
+Estratégia com mmap: - Tempo médio: 3.4705263666666704
 
 512 MB
-Estratégia tradicional - Tempo médio: 0.0005237333333332946
-Estratégia com mmap: - Tempo médio: 0.0009439666666664811
+Estratégia tradicional - Tempo médio: 59.91307493333334
+Estratégia com mmap: - Tempo médio: 6.505290433333319
 ```
-![Escrita com método tradicional e com mmap](https://imgur.com/MdR4JJW.png)
+![Escrita com método tradicional e com mmap](https://imgur.com/AnBFHGY.png)
 
-> Obs: Cada tamanho foi executado individualmente 3 vezes e em seguida foi tirado o tempo médio correspondente.
+## Considerações adotadas
+
+* Na leitura, cada tamanho foi executado individualmente 3 vezes e, em cada vez, foi executado o mesmo trecho de código 30 vezes.
+* Na escrita, cada tamanho foi executado individualmente 3 vezes e, em cada vez, foi executado o mesmo trecho de código 1000 vezes.
+* A média do tempo, para cada tamanho, é determinada pela a quantidade de vezes que o determinado trecho de código foi executado pelo o número de vezes que houve essa execução.
+* Neste caso, a fórmula adotada para o tempo médio foi: Tempo_Medio = &#8721;(quant_de_Vezes_do_trecho_de_codigo)/3 .
 
 ## Conclusões
 * A leitura com mmap em todos cenários, desde arquivos menores até arquivos maiores, é mais rápida que a leitura tradiconal.
-* A leitura com mmap, como pode-se observar no gráfico de leitura, em cenários de arquivos maiores tamanhos compensa ainda mais que a leitura convencional.
-* A escrita com mmap, têm-se uma grande variação, porém em comparação com a escrita tradicional, em todos cenários, é pior que a escrita tradicional.
+* A leitura com mmap, como pode-se observar no gráfico de leitura, em cenários de arquivos maiores tamanhos compensa ainda mais que a leitura tradicional.
+* A escrita com mmap, em todos cenários, desde arquivo menores até arquivos maiores, apresentou um melhor desempenho.
+* A escrita com mmap, da mesma forma em que a leitura, compensa ainda mais quando se tem arquivos grandes, em comparação com o método tradicional.
 > Obs: Os testes foram realizados em diferentes máquinas e apesar de algumas variações no gráfico, todos testes chegaram a mesma conclusão.

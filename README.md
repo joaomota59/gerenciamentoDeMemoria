@@ -1,7 +1,7 @@
 # Gerenciamento De Memória
 
 ## Downloads necessários:
-* Arquivos de entrada utilizados: https://drive.google.com/drive/u/1/folders/1mrjKXamBoXfU5X-7loa0xInKnZqo8Pqi
+* Arquivos de entrada utilizados: [Arquivos de Entrada](https://github.com/joaomota59/gerenciamentoDeMemoria/blob/main/Arquivos%20de%20Entrada-20220622T183154Z-001.zip)
 > Obs: coloque todos arquivos no mesmo diretório do arquivo gdMemoria.py
 
 ## Comandos no shell
